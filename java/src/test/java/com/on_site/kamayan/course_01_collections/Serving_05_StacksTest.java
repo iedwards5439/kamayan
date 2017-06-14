@@ -68,7 +68,7 @@ public class Serving_05_StacksTest extends TestCase {
         return result;
     }
 
-    @Ignore("Remove this line to run this test")
+
     @Test
     public void testPushAddsElements() throws Exception {
         Stack stack = new Stack();
@@ -81,7 +81,6 @@ public class Serving_05_StacksTest extends TestCase {
         assertEquals(4, stack.size());
     }
 
-    @Ignore("Remove this line to run this test")
     @Test
     public void testPushAddsToTheTopOfTheStack() throws Exception {
         Stack stack = new Stack();
@@ -96,7 +95,6 @@ public class Serving_05_StacksTest extends TestCase {
         assertEquals(Arrays.asList(42, 43, 1, 2), actualElements);
     }
 
-    @Ignore("Remove this line to run this test")
     @Test
     public void testPushReturnsSelfSoItCanBeChained() throws Exception {
         Stack stack = new Stack();
