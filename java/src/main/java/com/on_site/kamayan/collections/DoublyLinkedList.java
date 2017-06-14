@@ -42,64 +42,83 @@ public class DoublyLinkedList {
     }
 
     public DoublyLinkedList prepend(Object value) {
-        throw Kamayan.todo(
-            "The prepend(Object) method should prepend the argument to the",
-            "beginning of this DoublyLinkedList and increase the size by 1. The",
-            "return value must be this."
-        );
+        if (head == null) {
+            head = new Node(value);
+            tail = head;
+        } else {
+            head = new Node(value, null, head);
+            head.child.previous = head;
+        }
+        size++;
+        return this;
     }
 
     public DoublyLinkedList add(Object value) {
-        throw Kamayan.todo(
-            "The add(Object) method should append the argument to the end of",
-            "this DoublyLinkedList and increase the size by 1. The return value",
-            "must be this."
-        );
+        if (head == null) {
+            head = new Node(value);
+            tail = head;
+        } else {
+            tail = new Node(value, tail, null);
+            tail.previous.child = tail;
+        }
+        size++;
+        return this;
     }
 
     public Object first() {
-        throw Kamayan.todo(
-            "The first() method should return the value of the first item. An",
-            "IndexOutOfBoundsException should be thrown if the list is empty."
-        );
+        checkListNotEmpty();
+        return head.value;
     }
 
     public Object last() {
-        throw Kamayan.todo(
-            "The last() method should return the value of that item. An",
-            "IndexOutOfBoundsException should be thrown if the list is empty."
-        );
+        checkListNotEmpty();
+        return tail.value;
     }
 
     public Object deleteFirst() {
-        throw Kamayan.todo(
-            "The deleteFirst() method should delete the first item in the list",
-            "and return the value of that item. The size must be reduced by 1.",
-            "An IndexOutOfBoundsException should be thrown if the list is empty."
-        );
+        checkListNotEmpty();
+        Object deletedValue = head.value;
+        if (size == 1) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.child;
+            head.previous = null;
+        }
+        size--;
+        return deletedValue;
     }
 
     public Object deleteLast() {
-        throw Kamayan.todo(
-            "The deleteLast() should delete the last item in the list and",
-            "return the value of that item. The size must be reduced by 1. An",
-            "IndexOutOfBoundsException should be thrown if the list is empty."
-        );
+        checkListNotEmpty();
+        Object deletedValue = tail.value;
+        if (size == 1) {
+            head = null;
+            tail = null;
+        } else {
+            tail = tail.previous;
+            tail.child = null;
+        }
+        size--;
+        return deletedValue;
     }
 
     public DoublyLinkedList each(Consumer<Object> block) {
-        throw Kamayan.todo(
-            "The each(Consumer) method yields to the consumer with each element",
-            "in the list, in order. The return value must be this."
-        );
+        Node tempNode = head;
+        while (tempNode != null) {
+            block.accept(tempNode.value);
+            tempNode = tempNode.child;
+        }
+        return this;
     }
 
     public DoublyLinkedList eachReversed(Consumer<Object> block) {
-        throw Kamayan.todo(
-            "The eachReversed(Consumer) method yields to the consumer with each",
-            "element in the list, in reverse order. The return value must be",
-            "this."
-        );
+        Node tempNode = tail;
+        while (tempNode != null) {
+            block.accept(tempNode.value);
+            tempNode = tempNode.previous;
+        }
+        return this;
     }
 
     private void checkBounds(int index) {
@@ -116,6 +135,12 @@ public class DoublyLinkedList {
     private void checkUpperBound(int index) {
         if (index >= size()) {
             throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
+    }
+
+    private void checkListNotEmpty() {
+        if (size() == 0) {
+            throw new IndexOutOfBoundsException("List is empty");
         }
     }
 }

@@ -33,7 +33,6 @@ import org.junit.Test;
  *   null <--- +---+ <-- prev --- +---+ <--- +---+
  */
 public class Serving_04_DoublyLinkedListsTest extends TestCase {
-    @Ignore("Remove this line to run this test")
     @Test
     public void prependAddsToTheBeginning() {
         DoublyLinkedList list = new DoublyLinkedList();

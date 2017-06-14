@@ -39,11 +39,11 @@
 //
 suite("ArrayList");
 
-test.skip("add exists", function() {
+test("add exists", function() {
     assert.methodExists(ArrayList, "add", 1);
 });
 
-test.skip("add increases the size", function() {
+test("add increases the size", function() {
     var list = new ArrayList();
     list.add(42);
     assert.equal(list.size(), 1);
@@ -51,7 +51,7 @@ test.skip("add increases the size", function() {
     assert.equal(list.size(), 2);
 });
 
-test.skip("add adds to the end", function() {
+test("add adds to the end", function() {
     var list = new ArrayList();
     list.add(42);
     list.add(43);

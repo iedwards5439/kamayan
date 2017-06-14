@@ -21,9 +21,24 @@ ArrayList.prototype.get = function(index) {
 // append the argument to the end of this ArrayList and increase the size by
 // 1. The return value must be this.
 
+ArrayList.prototype.add = function(value) {
+
+    //this._size = this._size + 1; 
+    this._size++;
+    this._set(this._size, )
+
+}
+
+
 // Define a method "prepend" which takes a single argument. This method should
 // prepend the argument to the beginning of this ArrayList and increase the size
 // by 1. The return value must be this.
+
+ArrayList.prototype.prepend = function(argument){
+    array.get(0); 
+
+}
+
 
 // Define a "delete" method which takes a single index argument. This method
 // should delete the value at the provided index and return it. The size should
