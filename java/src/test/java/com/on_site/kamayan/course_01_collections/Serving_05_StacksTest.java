@@ -105,7 +105,7 @@ public class Serving_05_StacksTest extends TestCase {
         assertEquals(stack, stack.push(43));
     }
 
-    @Ignore("Remove this line to run this test")
+    // @Ignore("Remove this line to run this test")
     @Test
     public void testPushWithNoMaxSizeShouldntOverflow() throws Exception {
         Stack stack = new Stack();
@@ -113,7 +113,7 @@ public class Serving_05_StacksTest extends TestCase {
         assertEquals(1000, stack.size());
     }
 
-    @Ignore("Remove this line to run this test")
+    // @Ignore("Remove this line to run this test")
     @Test
     public void testPushBeyondMaxSizeThrowsStackOverflowException() throws Exception {
         Stack stack = new Stack(5);

@@ -19,10 +19,14 @@ public class Stack {
     }
 
     public int size() {
+
         return list.size();
     }
 
     public Stack push(Object value) {
+        if (maxSize != null && size() >= maxSize) {
+            throw new StackOverflowException();
+        }
         list.add(value);
         // throw Kamayan.todo(
         //     "The push(Object) method should add the argument to the end of the",
